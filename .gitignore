@@ -1,0 +1,67 @@
+# === GLOBAL ===
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+.env
+.env.local
+.env.*.local
+
+# === NODE / NUXT / NEST ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.nuxt/
+.output/
+.cache/
+.husky/_
+
+# === FLUTTER ===
+# Generated files
+**/client/mobile/.dart_tool/
+**/client/mobile/.packages
+**/client/mobile/build/
+**/client/mobile/ios/Pods/
+**/client/mobile/pubspec.lock
+**/client/mobile/.flutter-plugins
+**/client/mobile/.flutter-plugins-dependencies
+
+# Android specific
+**/client/mobile/android/.gradle/
+**/client/mobile/android/app/build/
+**/client/mobile/android/key.properties
+
+# Xcode
+**/client/mobile/ios/Runner.xcodeproj/project.xcworkspace/
+**/client/mobile/ios/Runner.xcworkspace/
+**/client/mobile/ios/Flutter/Flutter.framework
+**/client/mobile/ios/Flutter/Flutter.podspec
+
+# === PYTHON (OCR + LLM Service) ===
+**/services/ocr_llm/__pycache__/
+**/services/ocr_llm/.pytest_cache/
+**/services/ocr_llm/.mypy_cache/
+**/services/ocr_llm/.ruff_cache/
+**/services/ocr_llm/*.pyc
+**/services/ocr_llm/.venv/
+**/services/ocr_llm/venv/
+**/services/ocr_llm/env/
+**/services/ocr_llm/.env
+
+# Temporary uploads
+/tmp/
+*.tmp
+*.jpg~
+*.png~
+
+# === VSCode ===
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
