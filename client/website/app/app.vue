@@ -2,6 +2,7 @@
 <template>
   <main class="bg-[#171717] text-white w-full min-h-screen font-display">
     <Navbar />
+    <Spotlight />
     <Transition name="page" mode="out-in">
       <NuxtPage />
     </Transition>
