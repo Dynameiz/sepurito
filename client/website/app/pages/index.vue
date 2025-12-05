@@ -11,7 +11,7 @@
             <div class="flex flex-col sm:flex-row gap-4 mt-10 mx-auto md:mx-0">
                 
                 <button
-                    class="w-full sm:w-48 flex flex-row justify-center gap-2 items-center px-4 py-3 bg-primary/60 text-white font-semibold rounded-md hover:bg-primary/50 shadow-lg shadow-transparent hover:shadow-primary-950 transition duration-300 cursor-pointer">
+                    class="w-full sm:w-48 flex flex-row justify-center gap-2 items-center px-4 py-3 bg-primary/80 text-white font-semibold rounded-md hover:bg-primary/50 shadow-lg shadow-transparent hover:shadow-primary-950 transition duration-300 cursor-pointer">
                     <Icon name="mdi:android" size="24" />
                     <p>Download Apk</p>
                 </button>
@@ -30,7 +30,7 @@
             <img
                 src="/image/mockup.png"
                 alt="Sepurito App Mockup"
-                class="w-64 sm:w-80 md:w-full h-auto drop-shadow-xl"
+                class="w-64 sm:w-80 md:w-full h-auto drop-shadow-xl animate-float"
             />
         </div>
     </div>
