@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sepurito/components/history_tile.dart';
-import 'package:sepurito/features/split_bill/models/bill.dart';
+import 'package:sepurito/features/split_bill/models/split_bill.dart';
 import 'package:sepurito/pages/loading.dart';
 import 'package:sepurito/utils/temp.dart';
 
@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List<Bill>? _history;
+  List<SplitBill>? _history;
 
   @override
   void initState() {
@@ -26,36 +26,27 @@ class _HomeState extends State<Home> {
   }
 
   void fetchData() async {
-    _history = seed();
+    _history = dummySplitBills;
   }
 
-  File? _image;
-  final _imagePicker = ImagePicker();
-
-  Future _getImage(ImageSource source) async {
-    final pickedFile = await _imagePicker.pickImage(
+  Future<File?> _getImage({required ImageSource source}) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(
       source: source,
       imageQuality: 100,
     );
-    if(pickedFile == null){
-      return;
+    if (image != null) {
+      return File(image.path);
     }
-
-    setState(() {
-      _image = File(pickedFile.path);
-    });
-
-    handleNavigation();
+    return null;
   }
 
-  void handleNavigation() {
-    if (_image != null) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => Loading(image: _image!),
-        ),
-      );
-    }
+  void handleNavigation(File image) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Loading(image: image),
+      ),
+    );
   }
 
   Future _selectPhoto() async {
@@ -79,9 +70,12 @@ class _HomeState extends State<Home> {
                     children: [
                       Expanded(
                         child: GestureDetector(
-                          onTap: () {
+                          onTap: () async {
                             Navigator.of(context).pop();
-                            _getImage(ImageSource.gallery);
+                            final image = await _getImage(source: ImageSource.gallery);
+                            if (image != null) {
+                              handleNavigation(image);
+                            }
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 18),
@@ -113,7 +107,11 @@ class _HomeState extends State<Home> {
                         child: GestureDetector(
                           onTap: () {
                             Navigator.of(context).pop();
-                            _getImage(ImageSource.camera);
+                            _getImage(source: ImageSource.camera).then((image) {
+                              if (image != null) {
+                                handleNavigation(image);
+                              }
+                            });
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 18),
@@ -182,9 +180,19 @@ class _HomeState extends State<Home> {
               ],
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // Constrain the scrollable area with Expanded so the ListView can size itself
+
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text("History", style: GoogleFonts.mulish(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),),
+                ),
+
                 Expanded(
                 child: Scrollbar(
                   thumbVisibility: true,
@@ -194,7 +202,8 @@ class _HomeState extends State<Home> {
                   itemCount: _history?.length ?? 0,
                   itemBuilder: (context, index) {
                     final bill = _history![index];
-                    return HistoryTile(history: bill);                  },
+                    return HistoryTile(history: bill);
+                    },
                   ),
                 ),
                 ),

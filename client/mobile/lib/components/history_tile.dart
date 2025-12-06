@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sepurito/features/split_bill/models/bill.dart';
+import 'package:sepurito/features/split_bill/models/split_bill.dart';
 
 class HistoryTile extends StatelessWidget {
-  final Bill history;
+  final SplitBill history;
 
   const HistoryTile({super.key, required this.history});
 
@@ -35,13 +35,7 @@ class HistoryTile extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(height: 4.0),
-                Text('Total: \$${history.total.toStringAsFixed(2)}',
-                    style: GoogleFonts.mulish(
-                      fontSize: 12,
-                      color: Colors.white70,
-                    ),
-                ),
+                
               ],
             ),
             ElevatedButton(

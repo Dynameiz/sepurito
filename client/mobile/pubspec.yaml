@@ -37,7 +37,10 @@ dependencies:
   google_fonts: ^6.3.3
   image_picker: ^1.1.2
   permission_handler: ^11.3.0
-
+  toastification: ^3.0.3
+  google_mlkit_text_recognition: ^0.15.0
+  firebase_core: ^4.2.1
+  firebase_ai: ^3.6.0
 
 dev_dependencies:
   flutter_test:

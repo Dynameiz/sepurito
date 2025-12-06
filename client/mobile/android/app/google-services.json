@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "342610841938",
+    "project_id": "sepurito",
+    "storage_bucket": "sepurito.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342610841938:android:f515467f20daafbc3d2a8b",
+        "android_client_info": {
+          "package_name": "com.example.sepurito"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCnz8VB25E0xKCUfo5IEMt6kHCXfuINeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

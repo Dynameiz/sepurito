@@ -1,13 +1,31 @@
-import 'package:sepurito/features/split_bill/models/item.dart';
+import 'item.dart';
 
 class Participant {
-  final String name;
-  final List<Item> items;
-  final double total;
+  String name;
+  bool isActive;
+  List<Item> items;
 
   Participant({
-    required this.name,
-    required this.items,
-    required this.total,
+    this.name = "",
+    this.isActive = false,
+    this.items = const [],
   });
+
+  double get totalBeforeTax =>
+      items.fold(0, (sum, item) => sum + item.subtotal);
+
+  double totalAfterTax = 0;
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "items": items.map((i) => i.toJson()).toList(),
+        "totalAfterTax": totalAfterTax,
+      };
+
+  factory Participant.fromJson(Map<String, dynamic> json) => Participant(
+        name: json["name"],
+        items: (json["items"] as List)
+            .map((i) => Item.fromJson(i))
+            .toList(),
+      );
 }
