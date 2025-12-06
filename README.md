@@ -1,6 +1,10 @@
-# Sepurito Monorepo
+# Sepurito
 
-A unified monorepo containing all major components of the **Sepurito** ecosystem: mobile app, web app, API server, and OCR+LLM service.
+<img width="1057" height="525" alt="sepurito" src="https://github.com/user-attachments/assets/33819a94-bf3c-41d2-864c-12d089649f95" />
+
+A unified ecosystem for receipt scanning, smart bill splitting, and streamlined group expense management.
+
+This monorepo contains all major components of the Sepurito platform, including the mobile app, website, and backend API.
 
 ---
 
@@ -13,11 +17,8 @@ sepurito_monorepo/
 │   ├── mobile/        # Flutter mobile application
 │   └── website/       # NuxtJS (Vue) web application
 │
-├── server/
-│   └── api/           # NestJS backend API service
-│
-└── service/
-    └── ocr_llm/       # OCR + LLM microservice (FastAPI or similar)
+└── server/
+    └── api/           # NestJS backend API service
 ```
 
 ---
@@ -30,19 +31,18 @@ sepurito_monorepo/
 
 ### **Website**
 
-* NuxtJS (Vue 3)
+* NuxtJS
 * TailwindCSS
 
 ### **Backend API**
 
 * NestJS
-* PostgreSQL / MySQL (or any ORM-supported DB)
+* PostgreSQL
 
-### **OCR + LLM Service**
+### **Receipt Text Extraction**
 
-* FastAPI
-* OCR Engine (e.g., EasyOCR, PaddleOCR)
-* LLM (OpenAI, Google Gemini, or Local model)
+* ML Kit Text Recognition (on-device)
+* Firebase AI Logic (Gemini 2.5 Flash)
 
 ---
 
@@ -51,8 +51,8 @@ sepurito_monorepo/
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/yourname/sepurito_monorepo.git
-cd sepurito_monorepo
+git clone https://github.com/Dynameiz/sepurito.git
+cd sepurito
 ```
 
 ---
@@ -89,48 +89,18 @@ npm install
 npm run start:dev
 ```
 
----
-
-### **OCR + LLM Service (FastAPI)**
-
-```
-cd service/ocr_llm
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
 Access docs at: **[http://localhost:8000/docs](http://localhost:8000/docs)**
-
----
-
-## 🔄 Git Workflow Suggestion
-
-* `main` → production-ready code
-* `dev` → development branch
-* `feature/*` → feature branches per module
-
-```
-git checkout -b feature/website-homepage
-```
 
 ---
 
 ## 🌐 Deployment Strategy
 
-* **Mobile**: Play Store / internal APK downloads
-* **Website**: Vercel or Netlify
-* **API & OCR/LLM services**: Docker + VPS or Render
-
----
-
-## 📜 License
-
-MIT or your chosen license.
+* **Mobile**: Internal APK downloads
+* **Website**: Vercel
+* **API services**: Vercel
 
 ---
 
 ## 🙌 Contributors
 
-* HN (Founder / Developer)
+* Hans William Christianto Wijaya (Founder / Developer)
