@@ -57,7 +57,7 @@ class _LoadingState extends State<Loading> {
   Future<Map<String, dynamic>> _processLLM({required String ocrText}) async {
 
     final model = FirebaseAI.googleAI().generativeModel(
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
     );
 
     String prompt =

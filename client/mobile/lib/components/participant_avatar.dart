@@ -49,6 +49,7 @@ class ParticipantAvatar extends StatelessWidget {
               onChanged: onNameChanged,
               textAlign: TextAlign.center,
               cursorColor: Color(0xFF00A67D),
+              textCapitalization: TextCapitalization.words,
               style: GoogleFonts.mulish(color: Colors.white),
               decoration: const InputDecoration(
                 border: InputBorder.none,

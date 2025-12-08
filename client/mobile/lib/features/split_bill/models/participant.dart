@@ -1,31 +1,31 @@
-import 'item.dart';
+import 'package:uuid/uuid.dart';
 
 class Participant {
+  final String id;
   String name;
   bool isActive;
-  List<Item> items;
+  
+  double totalBeforeTax = 0.0; 
+  double totalAfterTax = 0.0;  
 
   Participant({
+    String? id,
     this.name = "",
     this.isActive = false,
-    this.items = const [],
-  });
+  }) : id = id ?? const Uuid().v4();
 
-  double get totalBeforeTax =>
-      items.fold(0, (sum, item) => sum + item.subtotal);
-
-  double totalAfterTax = 0;
+  void resetTotals() {
+    totalBeforeTax = 0.0;
+    totalAfterTax = 0.0;
+  }
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
-        "items": items.map((i) => i.toJson()).toList(),
-        "totalAfterTax": totalAfterTax,
       };
 
   factory Participant.fromJson(Map<String, dynamic> json) => Participant(
+        id: json["id"],
         name: json["name"],
-        items: (json["items"] as List)
-            .map((i) => Item.fromJson(i))
-            .toList(),
       );
 }

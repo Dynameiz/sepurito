@@ -1,16 +1,16 @@
 import 'package:sepurito/features/receipt/models/receipt_item.dart';
 
 class Receipt {
-  final List<ReceiptItem> items;
-  final double tax;
-  final double service;
-  final double total;
+  List<ReceiptItem> items;
+  double tax;
+  double service;
+  double total;
 
   Receipt({
-    required this.items,
-    required this.tax,
-    required this.service,
-    required this.total,
+    this.items = const [],
+    this.tax = 0.0,
+    this.service = 0.0,
+    this.total = 0.0,
   });
 
   factory Receipt.fromJson(Map<String, dynamic> json) {

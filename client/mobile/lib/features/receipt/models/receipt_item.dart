@@ -1,12 +1,12 @@
 class ReceiptItem {
-  final String name;
-  final int quantity;
-  final double price;
+  String name;
+  int quantity;
+  double price;
 
   ReceiptItem({
-    required this.name,
-    required this.quantity,
-    required this.price,
+    this.name = '',
+    this.quantity = 1,
+    this.price = 0.0,
   });
 
   factory ReceiptItem.fromJson(Map<String, dynamic> json) {

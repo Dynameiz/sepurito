@@ -1,26 +1,26 @@
 class Item {
   final String name;
   final int quantity;
-  final double pricePerPiece;
+  final double price;
 
   Item({
     required this.name,
     required this.quantity,
-    required this.pricePerPiece,
+    required this.price,
   });
 
-  double get subtotal => quantity * pricePerPiece;
+  double get subtotal => quantity * price;
 
   Map<String, dynamic> toJson() => {
         "name": name,
         "quantity": quantity,
-        "pricePerPiece": pricePerPiece,
+        "price": price,
         "subtotal": subtotal,
       };
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         name: json["name"],
         quantity: json["quantity"],
-        pricePerPiece: (json["pricePerPiece"] as num).toDouble(),
+        price: (json["price"] as num).toDouble(),
       );
 }

@@ -3,10 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sepurito/components/history_tile.dart';
-import 'package:sepurito/features/split_bill/models/split_bill.dart';
+// import 'package:sepurito/components/history_tile.dart';
+// import 'package:sepurito/features/split_bill/models/split_bill.dart';
 import 'package:sepurito/pages/loading.dart';
-import 'package:sepurito/utils/temp.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,8 +16,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List<SplitBill>? _history;
-
   @override
   void initState() {
     fetchData();
@@ -26,7 +23,7 @@ class _HomeState extends State<Home> {
   }
 
   void fetchData() async {
-    _history = dummySplitBills;
+    // _history = dummySplitBills;
   }
 
   Future<File?> _getImage({required ImageSource source}) async {
@@ -197,14 +194,18 @@ class _HomeState extends State<Home> {
                 child: Scrollbar(
                   thumbVisibility: true,
                   thickness: 0.0,
-                  child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  itemCount: _history?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final bill = _history![index];
-                    return HistoryTile(history: bill);
-                    },
-                  ),
+                  child:
+                  Center(
+                    child: Text("No history available", style: GoogleFonts.mulish(color: Colors.white),),
+                  ), 
+                  // ListView.builder(
+                  // padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  // itemCount: _history?.length ?? 0,
+                  // itemBuilder: (context, index) {
+                  //   final bill = _history![index];
+                  //   return _history != null ? HistoryTile(history: bill) : Text("No history available", style: GoogleFonts.mulish(color: Colors.white),);
+                  //   },
+                  // ),
                 ),
                 ),
               ],
