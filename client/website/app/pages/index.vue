@@ -33,5 +33,6 @@
                 class="w-64 sm:w-80 md:w-full h-auto drop-shadow-xl animate-float"
             />
         </div>
+        <!-- <Footer /> -->
     </div>
 </template>

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+html, body {
+  background-color: #171717;
+}
+
 @theme {
   --font-display: "Mulish", sans-serif;
 }

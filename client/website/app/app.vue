@@ -1,15 +1,3 @@
-
-<template>
-  <main class="bg-[#171717] text-white w-full min-h-screen font-display">
-    <Navbar />
-    <Spotlight />
-    <Transition name="page" mode="out-in">
-      <NuxtPage />
-    </Transition>
-    <Footer />
-  </main>
-</template>
-
 <script setup lang="ts">
   useHead({
     title: 'Sepurito',
@@ -34,4 +22,26 @@
       { rel: 'canonical', href: 'https://sepurito.vercel.app' }
     ]
   })
+
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { ScrollSmoother } from 'gsap/ScrollSmoother';
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
+  }
+
 </script>
+
+<template>
+  <main id="smooth-wrapper" class="bg-[#171717] text-white w-full min-h-screen font-display">
+    <Navbar />
+    <Spotlight />
+    <div id="smooth-content">
+    <Transition name="page" mode="out-in">
+        <NuxtPage />
+      </Transition>
+    </div>
+  </main>
+</template>
