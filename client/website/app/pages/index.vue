@@ -1,3 +1,17 @@
+<script setup>
+    import { nextTick, onMounted } from 'vue';
+    import { useSmoother } from '../composables/useSmoother';
+
+    const { smoother } = useSmoother({
+    smooth: 2,
+    effects: true,
+    });
+
+    onMounted(async () => {
+    await nextTick();
+    });
+</script>
+
 <template>
     <div class="w-full min-h-screen max-h-screen max-w-6xl mx-auto px-16 py-32 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
